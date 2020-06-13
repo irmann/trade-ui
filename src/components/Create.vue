@@ -25,6 +25,7 @@
               label="Maturity Date"
               v-model="maturityDate">
             </v-text-field>
+            <v-checkbox v-model="expired" class="mx-2" label="Expired"></v-checkbox>
             <div class="my-2">
              <v-btn depressed small color="primary"  @click.prevent="submitTrade">Submit Trade</v-btn>
             </div>
@@ -60,6 +61,7 @@ export default {
     countryPartyId: null,
     bookId: null,
     maturityDate: null,
+    expired: false,
     headers: [
           {
             text: 'Trades',
@@ -68,13 +70,19 @@ export default {
           },
           { text: 'ID', value: 'tradeId' },
           { text: 'Version', value: 'tradeVersion' },
+          { text: 'Version', value: 'tradeVersion' },
+          { text: 'CountryPartyId', value: 'countryPartyId' },
+          { text: 'BookId', value: 'bookId' },
+          { text: 'MaturityDate', value: 'maturityDateFormatted' },
+          { text: 'CreatedDate', value: 'createdDateFormatted' },
+          { text: 'Expired', value: 'expired' },
         ],
         trades: []
 
   }),
     methods:{
      submitTrade: function(evt){
-      const dataStr  = '{"tradeId": "'+this.tradeId+'", "tradeVersion": '+this.tradeVersion+', "countryPartyId": "'+this.countryPartyId+'", "bookId": "'+this.bookId+'", "maturityDate": "'+this.maturityDate+'"}'
+      const dataStr  = '{"tradeId": "'+this.tradeId+'", "tradeVersion": '+this.tradeVersion+', "countryPartyId": "'+this.countryPartyId+'", "bookId": "'+this.bookId+'", "maturityDate": "'+this.maturityDate+'", "expired" : "'+this.expired+'"}'
       console.log(dataStr);
       this.hasError = false
       this.errorMessage = ""
@@ -95,6 +103,7 @@ export default {
             this.countryPartyId = null
             this.bookId = null
             this.maturityDate = null
+            this.expired = false
          }
          
       }).catch(error =>  {
