@@ -104,16 +104,10 @@
 
   },
 created() {
-            this.$eventHub.$on('change-profile', this.changeP)
+            
         },
-          methods: {
-
-            changeP(p) 
-            {   console.log("----"+p)
-                this.profile2 = p;
-            }
-
-        }
+  methods: {
+  }
 
   }
 </script>
