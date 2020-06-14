@@ -155,7 +155,7 @@ export default {
             this.errorMessage = JSON.stringify(response.data.messahe) 
             this.loading = false
           }else{
-              this.trades =response.data.payload.reverse()
+              this.trades =response.data.payload()
           }
         }).catch(error =>  {
             console.log(error);
