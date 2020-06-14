@@ -70,7 +70,6 @@ export default {
           },
           { text: 'ID', value: 'tradeId' },
           { text: 'Version', value: 'tradeVersion' },
-          { text: 'Version', value: 'tradeVersion' },
           { text: 'CountryPartyId', value: 'countryPartyId' },
           { text: 'BookId', value: 'bookId' },
           { text: 'MaturityDate', value: 'maturityDateFormatted' },
