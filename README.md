@@ -1,4 +1,4 @@
-# application-demo
+# trade
 
 ## Project setup
 ```

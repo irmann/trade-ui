@@ -30,20 +30,20 @@
              <v-btn depressed small color="primary"  @click.prevent="submitTrade">Submit Trade</v-btn>
             </div>
             <br/>
-            </v-col>
-             </v-row>
-             <v-row>
-            <v-col cols="8">
-            <v-flex>
+          </v-col>
+          </v-row>
+          <v-row>
+          <v-col cols="12">
+          <v-flex>
             <v-data-table
               :headers="headers"
               :items="trades"
               class="elevation-1"
             >
             </v-data-table>
-            </v-flex>
-         </v-col>
-         </v-row>
+          </v-flex>
+           </v-col>
+          </v-row>
       </v-flex>
     </v-layout>
   </v-container>
@@ -82,10 +82,40 @@ export default {
   }),
     methods:{
      submitTrade: function(evt){
-      const dataStr  = '{"tradeId": "'+this.tradeId+'", "tradeVersion": '+this.tradeVersion+', "countryPartyId": "'+this.countryPartyId+'", "bookId": "'+this.bookId+'", "maturityDate": "'+this.maturityDate+'", "expired" : "'+this.expired+'"}'
-      console.log(dataStr);
       this.hasError = false
       this.errorMessage = ""
+      if (this.tradeId == null){
+        this.hasError = true
+        this.errorMessage = "ID is required"
+        return
+      }
+      if (this.tradeVersion == null){
+        this.hasError = true
+        this.errorMessage = "Version is required"
+        return
+      }
+      if (!/^\+?\d+$/.test(this.tradeVersion)){
+        this.hasError = true
+        this.errorMessage = "Version must have only digits"
+        return
+      }
+      if (this.countryPartyId == null){
+        this.hasError = true
+        this.errorMessage = "countryPartyId is required"
+        return
+      }
+      if (this.bookId == null){
+        this.hasError = true
+        this.errorMessage = "bookId is required"
+        return
+      }
+      if (this.maturityDate == null){
+        this.hasError = true
+        this.errorMessage = "maturityDate is required"
+        return
+      }
+      const dataStr  = '{"tradeId": "'+this.tradeId+'", "tradeVersion": '+this.tradeVersion+', "countryPartyId": "'+this.countryPartyId+'", "bookId": "'+this.bookId+'", "maturityDate": "'+this.maturityDate+'", "expired" : "'+this.expired+'"}'
+      console.log(dataStr);
         axios({
         method: 'post',
         url: '/api/v1/trade',
