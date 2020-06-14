@@ -72,8 +72,8 @@ export default {
           { text: 'Version', value: 'tradeVersion' },
           { text: 'CountryPartyId', value: 'countryPartyId' },
           { text: 'BookId', value: 'bookId' },
-          { text: 'MaturityDate', value: 'maturityDateFormatted' },
-          { text: 'CreatedDate', value: 'createdDateFormatted' },
+          { text: 'MaturityDate', value: 'maturityDate' },
+          { text: 'CreatedDate', value: 'createdDate' },
           { text: 'Expired', value: 'expired' },
         ],
         trades: []
